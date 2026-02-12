@@ -11,7 +11,10 @@ app = FastAPI(
 # CORS – allow your frontend domain (localhost + production)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://followerssupply.store",
+        "https://www.followerssupply.store"
+    ],
     allow_methods=["GET"],
     allow_headers=["*"],
 )
@@ -153,4 +156,5 @@ def get_all_packages():
 def get_packages_by_type(type: str):
     """Sirf ek specific type ke packages (e.g. followers / views / verify)"""
     filtered = [pkg for pkg in PACKAGES if pkg["type"] == type]
+
     return {"packages": filtered}
